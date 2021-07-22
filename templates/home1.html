@@ -1,0 +1,104 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<style>
+h1,h2{
+
+  color:white;
+  background-color:#7D83FF;
+  margin-bottom: 0em;
+  margin-top: 0em;
+  margin-left: 0;
+  margin-right: 0;
+  text-indent: 50px;
+
+
+}
+* {
+   text-align: center;
+   
+}
+body{
+  background-color: #D4DCFF;
+}
+form {
+  
+  align-items: center;
+  width: 350px;
+  border: 5px solid #545cf1;
+  padding: 50px;
+  /*margin-left: 500px;*/
+  background-color: mintcream;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  border-radius: 15px;
+  text-align:center; 
+  
+}  
+/*.child{
+  display: flex;
+  align-items: center;
+  
+}*/
+
+
+</style>
+<h1 style="margin-top:1em" >Dr. Ambedkar Institute of Technology</h1>
+<h2 style="margin-bottom:5em">COVID Screening with Identity Recognition System</h2>
+  <! img src="logo1.png" height="100" width="100" />
+<body>
+    <form action="" method="POST">
+      <div class="child">
+      {%csrf_token%}
+      <! center>
+        <label>ENTER YOUR NAME :</label><br>
+        <input type="text" name='Nam' id="n" /><br><br>
+        
+        <input type="radio" id="stud" name="entry" value="student" onclick="disable()"/>
+        <label for="stud">STUDENT</label>
+        <input type="radio" name="entry" value="faculty" onclick="disable()"/>
+        <label for="lec">LECTURER</label>
+        <input type="radio" name="entry" value="guest" onclick="undisable()"/>
+        <label for="guest">GUEST</label><br><br>  
+        
+        
+        <label>USN /Faculty ID:</label><br>
+        <input type="text" name='uf' id="usn" /><br><br>
+        <script>
+            function disable() {
+              document.getElementById("usn").disabled = false;
+            }
+            
+            function undisable() {
+              document.getElementById("usn").disabled = true;
+            }
+            </script>
+
+        <label>   PHONE :  </label> <br>
+        <input type="text" name="country code"  value="+91" size="2"/>   
+        <input type="text" name="phone" size="10"/> <br> <br>  
+
+        <label> EMAIL ID:
+        </label><br>
+        <input type="email" id="email1" name="email"> <br>    
+        <br> <br> 
+
+        <input type="submit" value=" generate QR Code" />
+        <br><br><br>
+        
+    
+
+      <! /center>
+    </div>
+    
+    <div class="child">
+       
+          
+      {{svg|safe}}
+        
+            
+    </div>
+    </form> 
+</body>
+
+{%endblock%}
